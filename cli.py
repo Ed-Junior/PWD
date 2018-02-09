@@ -1,5 +1,6 @@
+# # -*- coding: utf-8 -*-
 # parte principal do programa
-#Cria comandos a ser recebidos pelo terminal(cmd)
+# Cria comandos a ser recebidos pelo terminal(cmd)
 #
 #
 # Autor Junior

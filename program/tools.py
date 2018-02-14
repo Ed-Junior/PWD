@@ -1,6 +1,7 @@
 import os
 from . import computer
 
+
 def shutdown():
     if computer.so() == "Windows":
         os.system("shutdown -s")

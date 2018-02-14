@@ -10,7 +10,6 @@
 from program import computer, cpu, memory, tools, disk, network
 import sys
 
-
 params = sys.argv
 
 # Analisa os arg recebidos pelo teminal(cmd)
@@ -29,7 +28,7 @@ if len(params) > 1:
 
 
     # Apresenta se Linux, a distro
-    elif params[1] ==  'distro':
+    elif params[1] == 'distro':
         print('distribuição:', computer.distro())
 
 
@@ -39,10 +38,10 @@ if len(params) > 1:
     # benchmarking n: mostra o desempenho do cpu por n vezes
     elif params[1] == 'process' or params[1] == '-p':
         if len(params) == 4 and params[2] == 'parcentage' and int(params[3]) >= 1:
-            for x in  range(int(params[3])):
+            for x in range(int(params[3])):
                 consume = cpu.percentage()
-                print('comsumindo',consume.user + consume.system, "%")
-                print('Livre:', str(consume.idle)+"%")
+                print('comsumindo', consume.user + consume.system, "%")
+                print('Livre:', str(consume.idle) + "%")
 
                 print("-" * 10)
 
@@ -52,8 +51,8 @@ if len(params) > 1:
                 consume = cpu.percentage()
                 media += consume.user + consume.system
 
-            media = media/int(params[3])
-            print("Media de consumo da cpu durante", params[3],'segundos:', str(media)[:5] + "%")
+            media = media / int(params[3])
+            print("Media de consumo da cpu durante", params[3], 'segundos:', str(media)[:5] + "%")
 
         else:
             print('processador:', computer.cpu())
@@ -70,13 +69,13 @@ if len(params) > 1:
     # used: quantidade de memoria sendo usada
     elif params[1] == 'memory' or params[1] == '-m':
         if str(params).find('size') > 0:
-            print("Tamanho da memoria", memory.size(),"GBs")
+            print("Tamanho da memoria", memory.size(), "GBs")
 
         if str(params).find("percentage") > 0:
-            print("Consumo atual de memoria", str(memory.percentage())+"%")
+            print("Consumo atual de memoria", str(memory.percentage()) + "%")
 
         if str(params).find("free") > 0:
-            print("Memoria Livre:",memory.free(),"GBs")
+            print("Memoria Livre:", memory.free(), "GBs")
 
         if str(params).find("used") > 0:
             print("Memoria sendo usada:", memory.used(), "GBs")
@@ -84,12 +83,12 @@ if len(params) > 1:
 
     # Disk recebe info e mostra quantos discos disponiveis e apresenta-os
     elif params[1] == "disk" or params[1] == '-d':
-        if str(params).find("info") >0:
+        if str(params).find("info") > 0:
             disklint = disk.info()
             i = 0
             print("Nº de discos", len(disklint))
             while i < len(disklint):
-                print("="*20)
+                print("=" * 20)
                 print("ponto de montagem:", disklint[i].mountpoint)
                 print("sistema de arquivos:", disklint[i].fstype)
                 i += 1
@@ -102,13 +101,13 @@ if len(params) > 1:
         if str(params).find("bytes") > 0:
             bytes_network = network.info()
 
-            print("Bytes enviados:", round(bytes_network.bytes_sent/1024**3,3),"GBs")
-            print("Bytes recebidos:", round(bytes_network.bytes_recv/1024**3,3),"GBs")
+            print("Bytes enviados:", round(bytes_network.bytes_sent / 1024 ** 3, 3), "GBs")
+            print("Bytes recebidos:", round(bytes_network.bytes_recv / 1024 ** 3, 3), "GBs")
 
         if str(params).find("packs") > 0:
             bytes_network = network.info()
-            print("Pacotes enviados:", round(bytes_network.packets_sent/1024**3,5))
-            print("Pacotes recebidos:", round(bytes_network.packets_recv/1024**3,5))
+            print("Pacotes enviados:", round(bytes_network.packets_sent / 1024 ** 3, 5))
+            print("Pacotes recebidos:", round(bytes_network.packets_recv / 1024 ** 3, 5))
 
 
 

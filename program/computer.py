@@ -1,5 +1,5 @@
 import platform
-
+# import os
 
 def so():
     return platform.uname().system
@@ -22,7 +22,7 @@ def cpu():
 
 
 def distro():
-    if os() == "Linux":
+    if so() == "Linux":
         return platform.dist()
     else:
-        return os()
+        return so()
